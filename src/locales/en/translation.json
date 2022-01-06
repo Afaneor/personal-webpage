@@ -1,0 +1,25 @@
+{
+  "title": "welcome",
+  "Text": "Текст",
+  "translations": {
+    "someThing": "default value"
+  },
+  "Welcome": "Welcome",
+  "nikolayPavlin": "Nikolay Pavlin",
+  "profession": "(Developer | Teamlead | Speaker)",
+  "description": "Nikolay is a Head of the Technology Department at Nova. He with honors from the Moscow Technical University of Communications and Informatics. Later, he received a master’s degree at the Financial University under the President of the Russian Federation.\n\nIn 2019, he joined the Nova team as a software engineer. In 2020, he headed the development team, and in 2021, the Technology Department.\n\nNova provides technological solutions in the field of IT and industrial information systems. Their solutions help companies automate processes and conduct analytics based on data received from wearable devices.\n\nNikolay Pavlin regularly participates as a speaker at events related to HSE. He is a lecturer at the Moscow Technical University of Communications and Informatics.",
+  "articles": "Articles",
+  "now": "now",
+  "homepage": "Homepage",
+  "work": "Work",
+  "CTO": "CTO",
+  "teamlead": "Teamlead",
+  "developer": "Developer",
+  "analytic": "Analytic",
+  "study": "Studies",
+  "magistrate": "Master degree",
+  "fu": "Finance University",
+  "bachelor": "PhD",
+  "mtuci": "MTUCI",
+  "projects": "Projects"
+}
