@@ -1,9 +1,9 @@
-var fs = require('fs');
-const path = require('path');
-const typescript = require('typescript');
-const compilerOptions = require('../../tsconfig.json').compilerOptions;
+const fs = require('fs')
+const path = require('path')
+const typescript = require('typescript')
+const compilerOptions = require('../../tsconfig.json').compilerOptions
 
-const stringfyTranslationObjects = require('./stringfyTranslations.js');
+const stringfyTranslationObjects = require('./stringfyTranslations.js')
 
 module.exports = {
   input: [
@@ -36,27 +36,27 @@ module.exports = {
     },
   },
   transform: function transform(file, enc, done) {
-    const extensions = ['.ts', '.tsx'];
+    const extensions = ['.ts', '.tsx']
 
-    const { base, ext } = path.parse(file.path);
+    const { base, ext } = path.parse(file.path)
     if (extensions.includes(ext) && !base.includes('.d.ts')) {
-      const content = fs.readFileSync(file.path, enc);
-      const shouldStringfyObjects = base === 'messages.ts';
-      parseContent(content, this.parser, shouldStringfyObjects);
+      const content = fs.readFileSync(file.path, enc)
+      const shouldStringfyObjects = base === 'messages.ts'
+      parseContent(content, this.parser, shouldStringfyObjects)
     }
 
-    done();
+    done()
   },
-};
+}
 function parseContent(content, parser, shouldStringfyObjects = true) {
   const { outputText } = typescript.transpileModule(content, {
     compilerOptions: compilerOptions,
-  });
-  let cleanedContent = outputText;
+  })
+  let cleanedContent = outputText
   if (shouldStringfyObjects) {
-    cleanedContent = stringfyTranslationObjects(outputText);
+    cleanedContent = stringfyTranslationObjects(outputText)
   }
-  parser.parseFuncFromString(cleanedContent);
+  parser.parseFuncFromString(cleanedContent)
 }
 
-module.exports.parseContent = parseContent;
+module.exports.parseContent = parseContent

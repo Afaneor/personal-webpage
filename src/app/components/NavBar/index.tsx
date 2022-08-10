@@ -1,11 +1,5 @@
-/**
- *
- * NavBar
- *
- */
-import * as React from 'react';
-import { useTranslation } from 'react-i18next';
-import { ReactNode } from 'react';
+import * as React from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   Box,
   Flex,
@@ -14,19 +8,20 @@ import {
   useColorModeValue,
   Stack,
   useColorMode,
-} from '@chakra-ui/react';
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { Link as ReactLink } from 'react-router-dom';
+} from '@chakra-ui/react'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { Link as ReactLink } from 'react-router-dom'
 
-interface Props {}
-export function NavBar(props: Props) {
-  const { t } = useTranslation();
-  const { colorMode, toggleColorMode } = useColorMode();
+export function NavBar() {
+  const { t } = useTranslation()
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
     <>
       <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
         <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <ReactLink to={'/'}>{t('nikolayPavlin', 'Николай Павлин')}</ReactLink>
+          <ReactLink to={'/'}>
+            <>{t('nikolayPavlin', 'Николай Павлин')}</>
+          </ReactLink>
           <Stack direction={'row'} spacing={14}>
             <Link
               rounded={'md'}
@@ -37,7 +32,7 @@ export function NavBar(props: Props) {
               href={'https://blog.pavlin.tech'}
               isExternal={true}
             >
-              {t('articles', 'Статьи')}
+              <>{t('articles', 'Статьи')}</>
             </Link>
           </Stack>
           <Stack direction={'row'}>
@@ -51,5 +46,5 @@ export function NavBar(props: Props) {
         </Flex>
       </Box>
     </>
-  );
+  )
 }

@@ -1,11 +1,11 @@
-import { SliceProptNames } from '../../generators/slice';
+import { SliceProptNames } from '../../generators/slice'
 
-type SliceVariationType = { [P in SliceProptNames]: any }[];
+type SliceVariationType = { [P in SliceProptNames]: any }[]
 
-const sliceNameBase = `generatorTestingSlice`;
+const sliceNameBase = `generatorTestingSlice`
 
 export const sliceVariations = (): SliceVariationType => {
-  const variations: SliceVariationType = [
+  return [
     {
       sliceName: `${sliceNameBase}1`,
       path: ``,
@@ -21,7 +21,5 @@ export const sliceVariations = (): SliceVariationType => {
       path: `/pages/HomePage/Features`,
       wantSaga: true,
     },
-  ];
-
-  return variations;
-};
+  ]
+}

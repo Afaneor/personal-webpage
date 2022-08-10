@@ -2,13 +2,13 @@
  * Component Generator
  */
 
-import { Actions, PlopGeneratorConfig } from 'node-plop';
-import inquirer from 'inquirer';
+import { Actions, PlopGeneratorConfig } from 'node-plop'
+import inquirer from 'inquirer'
 
-import { pathExists } from '../utils';
-import { baseGeneratorPath } from '../paths';
+import { pathExists } from '../utils'
+import { baseGeneratorPath } from '../paths'
 
-inquirer.registerPrompt('directory', require('inquirer-directory'));
+inquirer.registerPrompt('directory', require('inquirer-directory'))
 
 export enum ComponentProptNames {
   componentName = 'componentName',
@@ -20,7 +20,7 @@ export enum ComponentProptNames {
   wantTests = 'wantTests',
 }
 
-type Answers = { [P in ComponentProptNames]: string };
+type Answers = { [P in ComponentProptNames]: string }
 
 export const componentGenerator: PlopGeneratorConfig = {
   description: 'Add a component',
@@ -69,13 +69,13 @@ export const componentGenerator: PlopGeneratorConfig = {
     },
   ],
   actions: data => {
-    const answers = data as Answers;
+    const answers = data as Answers
 
-    const componentPath = `${baseGeneratorPath}/${answers.path}/{{properCase ${ComponentProptNames.componentName}}}`;
-    const actualComponentPath = `${baseGeneratorPath}/${answers.path}/${answers.componentName}`;
+    const componentPath = `${baseGeneratorPath}/${answers.path}/{{properCase ${ComponentProptNames.componentName}}}`
+    const actualComponentPath = `${baseGeneratorPath}/${answers.path}/${answers.componentName}`
 
     if (pathExists(actualComponentPath)) {
-      throw new Error(`Component '${answers.componentName}' already exists`);
+      throw new Error(`Component '${answers.componentName}' already exists`)
     }
     const actions: Actions = [
       {
@@ -84,7 +84,7 @@ export const componentGenerator: PlopGeneratorConfig = {
         templateFile: './component/index.tsx.hbs',
         abortOnFail: true,
       },
-    ];
+    ]
 
     if (answers.wantLoadable) {
       actions.push({
@@ -92,7 +92,7 @@ export const componentGenerator: PlopGeneratorConfig = {
         path: `${componentPath}/Loadable.ts`,
         templateFile: './component/loadable.ts.hbs',
         abortOnFail: true,
-      });
+      })
     }
 
     if (answers.wantTests) {
@@ -101,7 +101,7 @@ export const componentGenerator: PlopGeneratorConfig = {
         path: `${componentPath}/__tests__/index.test.tsx`,
         templateFile: './component/index.test.tsx.hbs',
         abortOnFail: true,
-      });
+      })
     }
 
     if (answers.wantTranslations) {
@@ -110,14 +110,14 @@ export const componentGenerator: PlopGeneratorConfig = {
         path: `${componentPath}/messages.ts`,
         templateFile: './component/messages.ts.hbs',
         abortOnFail: true,
-      });
+      })
     }
 
     actions.push({
       type: 'prettify',
       data: { path: `${actualComponentPath}/**` },
-    });
+    })
 
-    return actions;
+    return actions
   },
-};
+}

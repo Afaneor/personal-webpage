@@ -1,35 +1,30 @@
-/**
- *
- * Responsibilities
- *
- */
-import * as React from 'react';
+import * as React from 'react'
 import {
   AccordionButton,
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
   Box,
-} from '@chakra-ui/react';
-import { ReactNode } from 'react';
-import { useTranslation } from 'react-i18next';
+} from '@chakra-ui/react'
+import { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 
-interface Props {}
+interface ResponsibilityProps {
+  position: string
+  company: string
+  children?: ReactNode
+  start?: string
+  end?: string
+}
 
-export function Responsibilities({
+export function Responsibility({
   position,
   company,
   children,
   start,
   end,
-}: {
-  position: string;
-  company: string;
-  children?: ReactNode;
-  start?: string;
-  end?: string;
-}) {
-  const { t } = useTranslation();
+}: ResponsibilityProps) {
+  const { t } = useTranslation()
 
   return (
     <AccordionItem>
@@ -44,5 +39,5 @@ export function Responsibilities({
       </h2>
       <AccordionPanel pb={4}>{children}</AccordionPanel>
     </AccordionItem>
-  );
+  )
 }
