@@ -35,13 +35,11 @@ const yandexMetric = Number(process.env.yandexMetrika)
 ReactDOM.render(
   <ChakraProvider>
     <YMInitializer accounts={[yandexMetric]} />
-    <Provider store={store}>
-      <React.StrictMode>
-        <HelmetProvider>
-          <App />
-        </HelmetProvider>
-      </React.StrictMode>
-    </Provider>
+    <HelmetProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </HelmetProvider>
   </ChakraProvider>,
   MOUNT_NODE,
 )

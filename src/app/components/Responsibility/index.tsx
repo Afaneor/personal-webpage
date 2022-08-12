@@ -31,8 +31,10 @@ export function Responsibility({
       <h2>
         <AccordionButton>
           <Box flex="1" textAlign="left">
-            {position} ({company}) {start} -{' '}
-            {end || t('now', 'настоящее время')}
+            <>
+              {position} ({company}) {start} -{' '}
+              {end || t('now', 'настоящее время')}
+            </>
           </Box>
           <AccordionIcon />
         </AccordionButton>

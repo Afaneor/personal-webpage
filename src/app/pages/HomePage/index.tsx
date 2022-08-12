@@ -66,9 +66,7 @@ export function HomePage() {
   return (
     <>
       <Helmet>
-        <title>
-          <>{t('homepage', 'Домашняя страница')}</>
-        </title>
+        <title>{t('homepage', 'Домашняя страница')}</title>
       </Helmet>
       <SimpleGrid minChildWidth={'250px'} gap={5}>
         <Model />
@@ -78,9 +76,10 @@ export function HomePage() {
         <>{t('work', 'Работа')}</>
       </Section>
       <Accordion allowMultiple>
-        {workingResponsibilities.map(responsibility => {
+        {workingResponsibilities.map((responsibility, index) => {
           return (
             <Responsibility
+              key={index}
               position={responsibility.position}
               company={responsibility.company}
               start={responsibility?.start}
@@ -93,9 +92,10 @@ export function HomePage() {
         <>{t('study', 'Учеба')}</>
       </Section>
       <Accordion allowMultiple>
-        {studyResponsibilities.map(responsibility => {
+        {studyResponsibilities.map((responsibility, index) => {
           return (
             <Responsibility
+              key={index}
               position={responsibility.position}
               company={responsibility.company}
               start={responsibility?.start}
