@@ -66,7 +66,7 @@ export function HomePage() {
   return (
     <>
       <Helmet>
-        <title>{t('homepage', 'Домашняя страница')}</title>
+        <title>{t('homepage', 'Домашняя страница') as string}</title>
       </Helmet>
       <SimpleGrid minChildWidth={'250px'} gap={5}>
         <Model />

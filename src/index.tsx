@@ -9,7 +9,6 @@ import 'react-app-polyfill/ie11'
 import 'react-app-polyfill/stable'
 
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ChakraProvider } from '@chakra-ui/react'
 // Use consistent styling
@@ -27,12 +26,14 @@ import reportWebVitals from 'reportWebVitals'
 // Initialize languages
 import './locales/i18n'
 import { YMInitializer } from 'react-yandex-metrika'
+import { createRoot } from 'react-dom/client'
 
 const store = configureAppStore()
 const MOUNT_NODE = document.getElementById('root') as HTMLElement
+const root = createRoot(MOUNT_NODE)
 const yandexMetric = Number(process.env.yandexMetrika)
 
-ReactDOM.render(
+root.render(
   <ChakraProvider>
     <YMInitializer accounts={[yandexMetric]} />
     <HelmetProvider>
@@ -41,7 +42,6 @@ ReactDOM.render(
       </Provider>
     </HelmetProvider>
   </ChakraProvider>,
-  MOUNT_NODE,
 )
 
 // Hot reloadable translation json files
